@@ -143,14 +143,12 @@ public class PantallaBienvenida extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JDialog dialog = new JDialog();
-        Boletero boletero = new Boletero();
+        pantallaCortaBoleta panel = new pantallaCortaBoleta();
+        
+        panel.setVisible(true);
         
         //PantallaVentaEntradas panel = new PantallaVentaEntradas(boletero);
-        panel.setVisible(true);
-        dialog.add(panel);
-        dialog.setSize(panel.getSize());
-        dialog.pack();
-        dialog.setVisible(true);
+        //panel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

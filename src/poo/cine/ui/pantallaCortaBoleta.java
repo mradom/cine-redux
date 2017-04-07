@@ -19,8 +19,7 @@ public class pantallaCortaBoleta extends javax.swing.JFrame {
      */
     public pantallaCortaBoleta() {
         initComponents();
-        cortaBoleta guardia = new cortaBoleta();
-        //this.jTextField1.
+        this.guardia = new cortaBoleta();
     }
 
     /**
@@ -113,8 +112,8 @@ public class pantallaCortaBoleta extends javax.swing.JFrame {
             this.jTextField2.setText("ES INVALIDA");
         }
 
-        cantidad = toString
-        this.jTextField3.setText(this.guardia.getContaEntrada());
+        String cantidad = String.valueOf(this.guardia.getContaEntrada());
+        this.jTextField3.setText(cantidad);
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
