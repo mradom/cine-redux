@@ -5,7 +5,11 @@
  */
 package poo.cine.ui;
 
+import java.util.HashSet;
+import java.util.Set;
 import poo.cine.usuario.cortaBoleta;
+import poo.cine.Pelicula;
+import poo.cine.dao.PeliculasDaoImpl;
 /**
  *
  * @author IEUser
@@ -13,13 +17,19 @@ import poo.cine.usuario.cortaBoleta;
 public class pantallaCortaBoleta extends javax.swing.JFrame {
 
     cortaBoleta guardia;
+    Pelicula pelicula;
+    PeliculasDaoImpl peliDao;
     int idPelicula;
+    private String PeliNombre;
+    private boolean encontrado;
     /**
      * Creates new form pantallaCortaBoleta
      */
     public pantallaCortaBoleta() {
         initComponents();
         this.guardia = new cortaBoleta();
+        this.pelicula = new Pelicula();
+        this.peliDao = new PeliculasDaoImpl();
     }
 
     /**
@@ -104,14 +114,14 @@ public class pantallaCortaBoleta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        this.idPelicula = Integer.parseInt(this.jTextField1.getText());
-        this.guardia.verificarEntrada(this.idPelicula);
-        if (this.guardia.isValida()) {
+        this.pelicula = this.peliDao.buscarPorNombre(this.jTextField1.getText());
+        if (this.pelicula != null) {
+            this.guardia.setContaEntrada(this.guardia.getContaEntrada() + 1);
             this.jTextField2.setText("ES VALIDA");
         } else {
             this.jTextField2.setText("ES INVALIDA");
         }
-
+        
         String cantidad = String.valueOf(this.guardia.getContaEntrada());
         this.jTextField3.setText(cantidad);
     }//GEN-LAST:event_jButton1MouseClicked
@@ -160,4 +170,32 @@ public class pantallaCortaBoleta extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the PeliNombre
+     */
+    public String getPeliNombre() {
+        return PeliNombre;
+    }
+
+    /**
+     * @param PeliNombre the PeliNombre to set
+     */
+    public void setPeliNombre(String PeliNombre) {
+        this.PeliNombre = PeliNombre;
+    }
+
+    /**
+     * @return the encontrado
+     */
+    public boolean isEncontrado() {
+        return encontrado;
+    }
+
+    /**
+     * @param encontrado the encontrado to set
+     */
+    public void setEncontrado(boolean encontrado) {
+        this.encontrado = encontrado;
+    }
 }
